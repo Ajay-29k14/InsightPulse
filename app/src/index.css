@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 89%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 89%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 89%;
+    --primary: 0 0% 89%;
+    --primary-foreground: 0 0% 2%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 89%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 89%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 89%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 89%;
+    --sidebar-primary: 0 0% 89%;
+    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 89%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 89%;
+
+    /* InsightPulse custom tokens */
+    --ip-bg-base: #050505;
+    --ip-bg-surface: #141414;
+    --ip-bg-surface-hover: #1a1a1a;
+    --ip-text-primary: #e2e2e2;
+    --ip-text-secondary: #5a5a5a;
+    --ip-text-muted: #404040;
+    --ip-accent-depression: #6366f1;
+    --ip-accent-anxiety: #ec4899;
+    --ip-accent-stress: #06b6d4;
+    --ip-accent-chat: #10b981;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--ip-bg-base);
+    color: var(--ip-text-primary);
+    overflow-x: hidden;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'Space Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+  }
+
+  .glass-card-hover {
+    transition: all 150ms ease-out;
+  }
+
+  .glass-card-hover:hover {
+    background: rgba(26, 26, 26, 0.9);
+    transform: scale(1.01);
+  }
+
+  .ip-input {
+    background: var(--ip-bg-base);
+    border: 1px solid var(--ip-text-muted);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--ip-text-primary);
+    font-size: 0.875rem;
+    transition: border-color 150ms ease-out;
+    width: 100%;
+  }
+
+  .ip-input:focus {
+    outline: none;
+    border-color: var(--ip-text-primary);
+  }
+
+  .ip-input::placeholder {
+    color: var(--ip-text-secondary);
+  }
+
+  .ip-btn {
+    background: var(--ip-text-primary);
+    color: var(--ip-bg-base);
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 150ms ease-out;
+    cursor: pointer;
+    border: none;
+  }
+
+  .ip-btn:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+  }
+
+  .ip-btn-secondary {
+    background: transparent;
+    color: var(--ip-text-primary);
+    border: 1px solid var(--ip-text-muted);
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 150ms ease-out;
+    cursor: pointer;
+  }
+
+  .ip-btn-secondary:hover {
+    border-color: var(--ip-text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .ip-btn-ghost {
+    background: transparent;
+    color: var(--ip-text-secondary);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    transition: all 150ms ease-out;
+    cursor: pointer;
+  }
+
+  .ip-btn-ghost:hover {
+    color: var(--ip-text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .severity-normal { color: #10b981; }
+  .severity-mild { color: #f59e0b; }
+  .severity-moderate { color: #f97316; }
+  .severity-severe { color: #ef4444; }
+  .severity-extremely-severe { color: #dc2626; }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--ip-text-muted);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--ip-text-secondary);
+  }
+}

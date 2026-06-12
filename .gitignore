@@ -1,0 +1,61 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment Variables
+.env
+
+# ======================
+# FastAPI
+# ======================
+*.log
+
+# ======================
+# Node / React / Vite
+# ======================
+node_modules/
+dist/
+build/
+
+# Vite
+vite.config.ts.timestamp-*
+
+# ======================
+# VS Code
+# ======================
+.vscode/
+
+# ======================
+# OS Files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# ML Models (optional)
+# ======================
+# Uncomment if models are large and not needed in GitHub
+# ml_models/
+# *.pkl
+
+# ======================
+# Coverage / Testing
+# ======================
+.coverage
+pytest_cache/
+htmlcov/
+
+# ======================
+# Misc
+# ======================
+*.tmp
+*.bak

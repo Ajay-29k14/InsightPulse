@@ -3,7 +3,7 @@ from functools import lru_cache
 
 
 class Settings(BaseSettings):
-    mongodb_uri: str = "mongodb://localhost:27017/insightpulse"
+    mongodb_uri: str = "mongodb+srv://insightpulse:insightpulse12345@fast.exnsnci.mongodb.net/?appName=Fast"
     db_name: str = "insightpulse"
     jwt_secret: str = "insightpulse-dev-secret-key-change-in-production"
     jwt_algorithm: str = "HS256"

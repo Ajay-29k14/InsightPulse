@@ -78,8 +78,12 @@ export default function Assessment() {
     try {
       const response = await assessmentApi.submit({ answers });
       setResult(response.data);
-    } catch (err: any) {
-      setError(err.response?.data?.detail || 'Submission failed. Please try again.');
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Submission failed. Please try again.');
+      }
     } finally {
       setIsSubmitting(false);
     }

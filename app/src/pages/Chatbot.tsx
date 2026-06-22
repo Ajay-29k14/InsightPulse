@@ -20,8 +20,10 @@ export default function Chatbot() {
     try {
       const response = await chatApi.getHistory();
       setMessages(response.data.messages);
-    } catch {
-      // Ignore errors
+    } catch (err) {
+      if (err instanceof Error) {
+        // Ignore errors
+      }
     } finally {
       setIsHistoryLoading(false);
     }
@@ -52,8 +54,11 @@ export default function Chatbot() {
         content: response.data.response,
         created_at: response.data.timestamp,
       }]);
-    } catch (err: any) {
-      const errorMsg = err.response?.data?.detail || 'Failed to get response. Please try again.';
+    } catch (err: unknown) {
+      // Safely extract possible API error detail
+      type ApiError = { response?: { data?: { detail?: string } } };
+      const apiErr = err as ApiError;
+      const errorMsg = apiErr?.response?.data?.detail || (err instanceof Error ? err.message : 'Failed to get response. Please try again.');
       setMessages(prev => [...prev, {
         role: 'assistant',
         content: `I apologize, but I encountered an error: ${errorMsg}. Please try again or contact support if the issue persists.`,

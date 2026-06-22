@@ -30,18 +30,16 @@ export default function Register() {
 
     try {
       await register(email, password, fullName);
-    } catch (err: unknown) {
-      setError(
-        isRegistrationError(err)
-          ? err.response?.data?.detail ?? 'Registration failed. Please try again.'
-          : err instanceof Error
-          ? err.message
-          : 'Registration failed. Please try again.'
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    }  catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('Registration failed. Please try again.');
+        }
+      }finally {
+        setIsLoading(false);
+      }
+    };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
